@@ -1,5 +1,5 @@
 import sys
-
+from timeit import default_timer as timer
 # Make pathsize max if no path exists
 INF = sys.maxsize
 
@@ -17,11 +17,11 @@ def floyd_warshall(graph):
     global vertex_number
     vertex_number = len(graph)
 
-    
+
     # Create an array with dimenions equal to the graph
     #  to update with the minimum path length
 
-    dist=[0 * vertex_number for _ in range(vertex_number)]
+    dist=[0 * vertex_number for i in range(vertex_number)]
 
     #  Populate the array with the given graph values 
     for i in range(vertex_number):
@@ -58,11 +58,12 @@ def print_solution(dist):
 # Run the code for the desired graph
 if __name__=='__main__':
     #  Graph for testing 
-    graph = [[0, 7, INF, 8],
-    [INF, 0, 5, INF],
-    [INF, INF, 0,   2],
-    [INF, INF, INF, 0]
+    graph = [[0, 1, 9],
+    [3, 0, 15],
+    [110, 54, 0],
+
     ]
+
 
     """ 
             7
@@ -75,6 +76,8 @@ if __name__=='__main__':
             2
     
     """
-
-
+    # Calculate run time and execute
+    start=timer()
     floyd_warshall(graph)
+    end=timer()
+    print(end - start, " runtime")
