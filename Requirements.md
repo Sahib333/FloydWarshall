@@ -5,3 +5,5 @@ sys
 itertools
 
 unittest
+
+timeit
